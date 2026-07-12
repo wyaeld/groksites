@@ -20,6 +20,8 @@ summaryLength = 30
   emailHref = "mailto:mrwaterbednz@gmail.com"
   region = "Greater Wellington, Kapiti Coast, Hutt Valley, Wairarapa & Palmerston North"
   tagline = "Soft-sided waterbeds. Real back-pain relief."
+  # Google Analytics 4 measurement ID (omit or leave empty to disable)
+  googleAnalytics = "G-SWE0NE72J3"
 
 [menus]
   [[menus.main]]
