@@ -24,9 +24,9 @@ Each site is a **standalone Hugo project**: its own config, content, theme/layou
 
 ## Sites
 
-| Directory    | Description                          | Production URL              |
-|-------------|--------------------------------------|-----------------------------|
-| `mrwaterbed/` | Mr Waterbed NZ marketing site      | https://www.mrwaterbed.co.nz/ |
+| Directory     | Netlify project | Base directory | URL |
+|---------------|-----------------|----------------|-----|
+| `mrwaterbed/` | `mrwaterbed`    | `mrwaterbed`   | https://mrwaterbed.netlify.app (prod domain: https://www.mrwaterbed.co.nz/) |
 
 ## Prerequisites
 
@@ -66,38 +66,42 @@ npm run build       # usually: CSS + hugo --minify
 
 Output goes to that site’s `public/` directory (gitignored).
 
-## Netlify deploy (one site per Netlify site)
+## Netlify continuous deploy (one Netlify site per subdir)
 
-Create a **separate Netlify site** for each folder you want live.
+This monorepo uses **Git continuous deployment**: a push to `main` rebuilds each linked Netlify project. Each site folder maps to **its own** Netlify project with **Base directory** set to that folder.
 
-1. Connect this Git repository.
-2. Set **Base directory** to the site folder (e.g. `mrwaterbed`).
-3. Leave build/publish settings to that folder’s `netlify.toml` (or set them explicitly):
-   - **Build command:** typically `npm run build`
-   - **Publish directory:** `public` (relative to the base directory)
+### How `mrwaterbed` is wired today
 
-Do **not** set the monorepo root as the base directory unless you intentionally only build one site from root.
+| Setting | Value |
+|---------|--------|
+| Repo | `wyaeld/groksites` |
+| Branch | `main` |
+| Base directory | `mrwaterbed` |
+| Build command | `npm ci && npm run build` (or from that folder’s `netlify.toml`) |
+| Publish directory | `public` (relative to the base directory) |
+| Path filter | `ignore` in `mrwaterbed/netlify.toml` skips builds when only other paths change |
 
-Suggested Netlify environment (often already in each `netlify.toml`):
+Do **not** set the monorepo root as the base directory unless you intentionally only build one site from root. Do **not** set Netlify **Package directory** to a nested path when it is the same as the base directory (that broke the first CD builds).
+
+Suggested env (usually already in each `netlify.toml`):
 
 - `HUGO_VERSION` — match local Hugo when possible  
 - `NODE_VERSION` — match the site’s Node needs  
 - `HUGO_ENV=production`  
 - `HUGO_ENABLEGITINFO=true` (optional; needs Git available at build)
 
-### Monorepo tip
-
-With base directory set, Netlify only runs that site’s build. Other folders in the repo are ignored for that deploy. You can still use [Netlify monorepo / path filters](https://docs.netlify.com/configure-builds/file-based-configuration/) or ignore builds when unrelated paths change, if you want faster CI.
-
-## Adding a new site
+### Adding a new site (code + Netlify CD)
 
 1. Create a new top-level directory: `mkdir newsite && cd newsite`
 2. Scaffold Hugo: `hugo new site . --force` (or copy a sibling site as a template)
-3. Add `netlify.toml` with build command, publish dir, Hugo/Node versions, and any headers/redirects
+3. Add `netlify.toml` with build command, publish dir, Hugo/Node versions, headers/redirects, and an `ignore` path filter (copy from `mrwaterbed/netlify.toml`)
 4. If using Tailwind (or other Node tooling), add `package.json` and scripts; keep deps **per site**
 5. Document the site in this README’s **Sites** table
-6. On Netlify: new site → same repo → **Base directory** = `newsite`
-
+6. Create a **new** Netlify project (do not reuse another site’s base dir):
+   - Connect repo `wyaeld/groksites`, production branch `main`
+   - **Base directory** = `newsite`
+   - Leave package directory empty / same as base
+   - Build command / publish from that folder’s `netlify.toml`
 ## Shared vs per-site
 
 | Concern | Where it lives |

@@ -1,6 +1,9 @@
 [build]
   command = "npm run build"
   publish = "public"
+  # Skip this site's build when the commit only touches other monorepo paths.
+  # Base dir is mrwaterbed on the Netlify project, so "." is this site folder.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ."
 
 [build.environment]
   HUGO_VERSION = "0.147.9"

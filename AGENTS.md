@@ -50,6 +50,13 @@ npm run build        # production: CSS + hugo (see package.json)
 
 Pin Hugo/Node versions to what that site’s `netlify.toml` declares when debugging deploy mismatches.
 
+## Continuous deployment
+
+- One Git repo (`wyaeld/groksites`) → many Netlify projects (one per site folder).
+- Each Netlify project: **Base directory** = that site’s top-level folder (e.g. `mrwaterbed`). Package directory should not be a nested path when it equals the base.
+- Push to `main` triggers a build per linked project; each site’s `netlify.toml` `ignore` should skip builds when only other monorepo paths changed.
+- Prefer Git CD over manual `netlify deploy --prod` once a site is linked.
+
 ## Adding a new site
 
 Follow root `README.md` → **Adding a new site**. Minimum:
@@ -58,6 +65,7 @@ Follow root `README.md` → **Adding a new site**. Minimum:
 - Own `hugo.toml` + `netlify.toml`
 - Own `package.json` only if the site needs Node tooling
 - Update the **Sites** table in root `README.md`
+- Create a **new** Netlify project with base directory = that folder (same repo, branch `main`)
 
 ## Stack notes (typical site)
 
