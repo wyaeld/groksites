@@ -103,6 +103,40 @@ npx skills add netlify/context-and-tools --skill '*' --yes
 - Commit only when the user asks.
 - Tracked agent content: `.agents/skills/` only. Other `.agents/`, `.claude/`, `.grok/` dirs stay gitignored.
 
+## QA checks
+
+Run these before calling a site “done” or shipping a content/layout/image change. Scope to the site you touched. Fail open: if something is missing, fix it or flag it to the user — do not silently skip.
+
+### Images
+
+- [ ] Every `<img>` (and CSS background image that ships a file) maps to a real asset under that site’s `static/` (or build pipeline).
+- [ ] **Display size vs file size:** intrinsic dimensions are appropriate for how the image is used in layout (CSS `max-width` / fixed sizes). Target roughly **2× the largest CSS display size** for retina; do not ship multi‑MB sources used at a few hundred pixels.
+- [ ] **Width/height attributes** on `<img>` match the file’s real aspect ratio (correct intrinsic size after resize).
+- [ ] **WebP (or better):** convert raster photos/illustrations to WebP when alpha/quality allow; keep PNG only when needed (e.g. tiny favicon). Prefer JPEG for OG/social cards if scrapers need it.
+- [ ] Masters may live in `assets/`; **only optimized files** should be what Hugo serves from `static/images/` (or equivalent).
+
+### Analytics & tags
+
+- [ ] **Google Analytics** is configured when the site should track traffic: measurement ID in site config (e.g. `params.googleAnalytics` in `hugo.toml`), partial included in the head, snippet present in production HTML.
+- [ ] GA (and similar third-party tags) **do not fire on local `hugo server`** if that is the site’s pattern; they **do** appear in production builds.
+- [ ] **Meta / head tags** are present and sensible: `<title>`, meta description, canonical, Open Graph (`og:title`, `og:description`, `og:image`, `og:url`), Twitter card tags, favicon, `theme-color` where used.
+- [ ] Forms that should collect leads use **Netlify Forms** (or the site’s chosen provider) with correct `name` / field names; honeypot or equivalent spam protection when applicable.
+
+### Copy review
+
+- [ ] **Second-agent copy review:** before treating marketing/landing copy as final, have **another agent** (or a dedicated review pass) read the visible copy for tone, clarity, NZ spelling if relevant, broken claims, and consistency with brand voice. Do not rely on a single authoring pass alone.
+- [ ] Headings, CTAs, contact details, and legal-ish claims match what is in site params / README brand notes.
+
+### Brand & site docs
+
+- [ ] The site has a **`README.md`** under `<site>/` with **brand details**: name, positioning/tagline, primary colours, fonts, contact (phone/email), region/service area, and any voice/tone notes an agent needs to stay on-brand.
+- [ ] Contact and brand facts in layouts/`hugo.toml` match that README (no drift).
+
+### Deploy / monorepo sanity
+
+- [ ] Site builds cleanly (`npm run build` or site equivalent).
+- [ ] Netlify base directory / `HUGO_VERSION` still make sense for that site after config changes.
+
 ## Agent checklist before finishing
 
 - [ ] Edits are under the intended site (or intentionally root docs/ignore)
@@ -111,3 +145,4 @@ npx skills add netlify/context-and-tools --skill '*' --yes
 - [ ] `baseURL` and contact/SEO params only changed when content/deploy target requires it
 - [ ] Netlify redirects/headers still make sense after URL/structure changes
 - [ ] Root README site table updated if a site was added/removed/renamed
+- [ ] **QA checks** above completed (or gaps called out to the user) for the work just done
