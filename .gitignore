@@ -20,7 +20,9 @@ pnpm-debug.log*
 # --- Local agent / Grok tooling ---
 .grok/
 .claude/
-.agents/
+.agents/*
+!.agents/skills/
+!.agents/skills/**
 
 # --- Environment & secrets ---
 .env

@@ -18,15 +18,16 @@
 {{- with .Params.image -}}
 <meta property="og:image" content="{{ . | absURL }}">
 {{- else -}}
-<meta property="og:image" content="{{ "images/waterbed-final.png" | absURL }}">
+<meta property="og:image" content="{{ "images/waterbed-final-og.jpg" | absURL }}">
 {{- end -}}
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ "images/waterbed-final-og.jpg" | absURL }}">
 
 <meta name="theme-color" content="#1B2B4B">
-<link rel="icon" href="{{ "images/logo.png" | relURL }}" type="image/png">
+<link rel="icon" href="{{ "images/favicon.png" | relURL }}" type="image/png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

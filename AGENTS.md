@@ -68,12 +68,32 @@ Pattern used by `mrwaterbed/` (not mandatory for every future site):
 - Netlify: `npm run build`, publish `public`
 - Single-page marketing layouts possible; redirects for old multi-page URLs may live in `netlify.toml`
 
+## Official Netlify skills
+
+This repo vendors Netlify’s official agent skills from
+[`netlify/context-and-tools`](https://github.com/netlify/context-and-tools):
+
+- Path: `.agents/skills/netlify-*/`
+- Lockfile: root `skills-lock.json` (source + content hashes)
+- Most relevant for this monorepo: **netlify-config**, **netlify-deploy**, **netlify-forms**, **netlify-caching**, **netlify-image-cdn**
+
+When changing `netlify.toml`, deploys, domains, redirects, headers, env vars, forms, or Netlify primitives, **read the matching skill’s `SKILL.md` first** (and any `references/` files it points to). Prefer those facts over inventing Netlify APIs.
+
+Refresh / reinstall:
+
+```bash
+npx skills add netlify/context-and-tools --skill '*' --yes
+```
+
+(Also available as the **netlify** plugin from the xAI Grok marketplace, or Claude `/plugin install netlify-skills@netlify-context-and-tools`.)
+
 ## Git
 
 - Repo root: `groksites/` (this directory).
 - One remote can back many Netlify sites via different base directories.
 - Do not nest a second `.git` inside a site directory.
 - Commit only when the user asks.
+- Tracked agent content: `.agents/skills/` only. Other `.agents/`, `.claude/`, `.grok/` dirs stay gitignored.
 
 ## Agent checklist before finishing
 

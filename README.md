@@ -104,9 +104,20 @@ With base directory set, Netlify only runs that site’s build. Other folders in
 |--------|----------------|
 | Git ignore for Hugo/Node/Netlify | Root `.gitignore` |
 | Repo overview & agent rules | Root `README.md`, `AGENTS.md` |
+| Official Netlify agent skills | `.agents/skills/netlify-*/` (from [netlify/context-and-tools](https://github.com/netlify/context-and-tools)) |
 | Site content, layouts, assets | `<site>/` |
 | Hugo config | `<site>/hugo.toml` |
 | Netlify config | `<site>/netlify.toml` |
 | npm / Tailwind | `<site>/package.json` |
 
 There is no shared Hugo theme or root `package.json` unless you intentionally add one later.
+
+### Agent skills (Netlify)
+
+Official Netlify skills are installed project-locally for agents (Claude, Grok, Codex, etc.):
+
+```bash
+npx skills add netlify/context-and-tools --skill '*' --yes
+```
+
+See `AGENTS.md` for which skills matter in this monorepo.
