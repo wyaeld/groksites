@@ -1,0 +1,272 @@
+{{ define "main" }}
+
+{{/* ── Brand hero: logo + title ── */}}
+<section class="section relative overflow-hidden bg-foam">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -right-24 -top-16 h-64 w-64 rounded-full bg-teal/10 blur-3xl"></div>
+    <div class="absolute -left-20 bottom-0 h-48 w-48 rounded-full bg-navy/8 blur-3xl"></div>
+  </div>
+  <div class="container-page relative flex flex-col items-center justify-center text-center">
+    <img
+      src="{{ "images/logo.png" | relURL }}"
+      alt="Mr Waterbed NZ logo — wave and soft-sided bed"
+      class="h-auto w-44 sm:w-56 md:w-64"
+      width="1650"
+      height="826"
+      fetchpriority="high"
+      decoding="async">
+    <h1 class="mt-6 font-display text-3xl font-extrabold tracking-tight text-navy sm:text-4xl md:text-5xl">
+      Mr Waterbed <span class="text-teal">NZ</span>
+    </h1>
+    <p class="mt-4 max-w-md text-lg leading-relaxed text-slate-body sm:text-xl">
+      Soft-sided waterbeds for real back-pain relief — sold and serviced by Colin across Wellington and beyond.
+    </p>
+    <div class="mt-8 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
+      <a href="#waterbeds" class="btn-primary">See our beds</a>
+      <a href="#contact" class="btn-ghost">Talk to Colin</a>
+    </div>
+  </div>
+</section>
+
+{{/* ── Waterbeds: bed pic left, features right ── */}}
+<section id="waterbeds" class="section bg-cream">
+  <div class="container-page">
+    <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+      <div class="lg:col-span-6">
+        <img
+          src="{{ "images/waterbed-final.png" | relURL }}"
+          alt="Illustrated soft-sided waterbed with cream wool top and storage drawers"
+          class="mx-auto h-auto w-full max-w-md drop-shadow-sm lg:max-w-none"
+          width="1600"
+          height="1200"
+          loading="lazy"
+          decoding="async">
+      </div>
+
+      <div class="lg:col-span-6">
+        <p class="eyebrow">Our Beds</p>
+        <h2 class="mt-3 text-3xl sm:text-4xl">A soft-sided waterbed that looks like a normal bed</h2>
+        <p class="mt-4 text-lg text-slate-body">
+          NZ-made Surrey softsides — full-body support, standard sheets, storage drawers, and no hard wooden rails.
+        </p>
+        <p class="price-pill mt-5">From $6,000</p>
+
+        <ul class="mt-8 space-y-4">
+          {{ range slice
+            "Looks and feels like a normal bed — no hard frames to climb over"
+            "100% body support that follows your curves and eases pressure points"
+            "Adjustable thermostat: warm in winter, cool in summer"
+            "Fully unzippable wool top (pillow-top option available)"
+            "Base with 4 storage drawers and castors for easy moving"
+            "Baffled bladder so the water stays calm — not free-wave thrashing"
+            "Standard bed sizes and normal fitted sheets"
+            "2-year manufacturer’s guarantee"
+          }}
+          <li class="flex gap-3 text-[1.05rem] leading-snug text-slate-body">
+            <span class="mt-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal/15 text-teal" aria-hidden="true">
+              <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 6l3 3 5-5"/></svg>
+            </span>
+            {{ . }}
+          </li>
+          {{ end }}
+        </ul>
+        <div class="mt-8">
+          <a href="#contact" class="btn-secondary">Ask about sizing &amp; colours</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{/* ── My story: text left, avatar panel right ── */}}
+<section id="story" class="section bg-foam">
+  <div class="container-page">
+    <div class="overflow-hidden rounded-3xl shadow-soft ring-1 ring-navy/8">
+      <div class="grid lg:grid-cols-12">
+        <div class="bg-foam px-6 py-10 sm:px-8 lg:col-span-7 lg:px-12 lg:py-14">
+          <p class="eyebrow">My story</p>
+          <h2 class="mt-3 text-2xl sm:text-3xl">Back pain that wouldn’t quit — until a soft-sided waterbed</h2>
+          <div class="prose-mw mt-5">
+            <p>In 1982 Colin ruptured a disc in his lower back. Surgery helped for a while, but the pain returned. In 2002 an orthopaedic surgeon said the original fusion needed redoing — and that the next vertebrae needed fusing too. He told Colin to wait as long as possible.</p>
+            <p>For years after that, pain forced Colin out of bed after about seven hours. Sleeping on his right side was the worst — all of this on a top-of-the-line Posturepedic.</p>
+            <p>In 2008 Colin bought the Mr Waterbed business and tried a modern soft-sided waterbed himself. Within weeks the comfort and pain relief surprised him. Over the next two years, right-side sleep discomfort faded until it was no longer an issue.</p>
+            <p class="!mb-0 font-semibold text-navy">Colin is still on his soft-sided waterbed. His back still loves the support — and he still hasn’t needed that second surgery recommended in 2002.</p>
+          </div>
+          <blockquote class="mt-8 border-l-4 border-teal pl-5 font-display text-xl font-semibold italic leading-snug text-navy sm:text-2xl">
+            Colin cannot believe how much this waterbed has improved his quality of life.
+          </blockquote>
+        </div>
+
+        <div class="story-panel grain relative flex flex-col items-center justify-center px-6 py-12 text-center lg:col-span-5 lg:px-8 lg:py-16">
+          <img
+            src="{{ "images/mrwaterbed-avatar.png" | relURL }}"
+            alt="Colin — Mr Waterbed NZ"
+            class="h-auto w-[min(20rem,85%)] rounded-[2rem] object-cover shadow-soft ring-4 ring-white/20 sm:w-96"
+            width="1408"
+            height="1408"
+            loading="lazy"
+            decoding="async">
+          <p class="mt-6 font-display text-2xl font-bold text-foam">Colin</p>
+          <p class="mt-1 text-sm font-semibold text-teal-soft">Mr Waterbed NZ</p>
+          <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/80">
+            Selling and servicing soft-sided waterbeds since 2008 — from the greater Wellington region.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{/* ── Services ── */}}
+<section id="services" class="section bg-cream">
+  <div class="container-page">
+    <div class="max-w-2xl">
+      <p class="eyebrow">Sales &amp; Service</p>
+      <h2 class="mt-3 text-3xl sm:text-4xl">More Than a One-Time Sale</h2>
+      <p class="mt-4 text-lg text-slate-body">
+        New beds, parts, repairs, moves, and installs — with personal service across greater Wellington, Kapiti, Hutt Valley, Wairarapa, and Palmerston North. Nationwide delivery available.
+      </p>
+    </div>
+
+    <ul class="mt-10 grid gap-3 sm:grid-cols-2">
+      {{ range slice
+        (dict "t" "New Waterbeds" "d" "Premium beds in standard sizes")
+        (dict "t" "New Bladders" "d" "All sizes — replacements that fit properly")
+        (dict "t" "Liners &amp; Headers" "d" "Fresh liners and end headers when you need them")
+        (dict "t" "Water Conditioner" "d" "Keep your bladder in good condition")
+        (dict "t" "Repair Kits &amp; Parts" "d" "Practical fixes you can do yourself")
+        (dict "t" "Leaks &amp; Repairs" "d" "On-site help with minimum disruption")
+        (dict "t" "Relocations" "d" "Drain, dismantle, and move with care")
+        (dict "t" "Install &amp; Fill" "d" "Set up and fill so you can sleep the same night")
+      }}
+      <li class="card flex gap-4 !p-5">
+        <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-teal-soft text-teal" aria-hidden="true">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+        <div>
+          <h3 class="text-lg font-bold text-navy">{{ .t | safeHTML }}</h3>
+          <p class="mt-1 text-sm leading-relaxed text-slate-body">{{ .d }}</p>
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+
+    <figure class="mt-10 rounded-2xl border-l-4 border-teal bg-foam p-6 shadow-card sm:p-8">
+      <blockquote class="font-display text-xl font-semibold italic leading-snug text-navy sm:text-2xl">
+        “… Colin arrived on time, completed the job efficiently and with minimum disruption. Nothing was a problem. Really great service.”
+      </blockquote>
+      <figcaption class="mt-3 text-sm font-semibold text-slate-body">Customer feedback</figcaption>
+    </figure>
+  </div>
+</section>
+
+{{/* ── Contact CTA + form ── */}}
+<section id="contact" class="section bg-navy text-teal-soft grain">
+  <div class="container-page relative">
+    <div class="mb-10 max-w-2xl text-center lg:mx-auto">
+      <p class="eyebrow !text-teal">Get in Touch</p>
+      <h2 class="mt-3 text-3xl text-foam sm:text-4xl">Talk to Colin about a soft-sided waterbed</h2>
+      <p class="mt-4 text-base leading-relaxed text-white/80 sm:text-lg">
+        Questions about back pain, baffling, sizing, or a service visit? Send a message — no pressure, just practical advice.
+      </p>
+    </div>
+
+    <div class="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
+      <div class="flex justify-center lg:col-span-5">
+        <img
+          src="{{ "images/man-on-bed.png" | relURL }}"
+          alt="Illustration of a man resting comfortably on a soft-sided waterbed"
+          class="mx-auto h-auto w-full max-w-xs object-contain drop-shadow-lg sm:max-w-sm"
+          width="1785"
+          height="1602"
+          loading="lazy"
+          decoding="async">
+      </div>
+
+      <div class="lg:col-span-7">
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="rounded-3xl bg-foam p-6 shadow-soft sm:p-8"
+          aria-label="Contact Colin">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden" aria-hidden="true">
+            <label>Don’t fill this out: <input name="bot-field"></label>
+          </p>
+
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div class="sm:col-span-1">
+              <label for="contact-name" class="form-label">Name</label>
+              <input type="text" id="contact-name" name="name" required autocomplete="name" class="form-field" placeholder="Your name">
+            </div>
+            <div class="sm:col-span-1">
+              <label for="contact-phone" class="form-label">Phone</label>
+              <input type="tel" id="contact-phone" name="phone" autocomplete="tel" class="form-field" placeholder="027…">
+            </div>
+            <div class="sm:col-span-2">
+              <label for="contact-email" class="form-label">Email</label>
+              <input type="email" id="contact-email" name="email" required autocomplete="email" class="form-field" placeholder="you@example.com">
+            </div>
+            <div class="sm:col-span-2">
+              <label for="contact-interest" class="form-label">I’m interested in</label>
+              <select id="contact-interest" name="interest" class="form-field">
+                <option value="new-bed">A new soft-sided waterbed</option>
+                <option value="service">Service or repair</option>
+                <option value="parts">Bladders or parts</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="contact-message" class="form-label">Message</label>
+              <textarea id="contact-message" name="message" required rows="4" class="form-field resize-y min-h-[7rem]" placeholder="Size, suburb, and what you need help with…"></textarea>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <button type="submit" class="btn-primary w-full sm:w-auto">Send Message</button>
+            <p class="text-center text-sm text-slate-body sm:text-left">
+              Or call <a href="{{ .Site.Params.phoneHref | safeURL }}" class="font-bold text-navy hover:text-teal">{{ .Site.Params.phone }}</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{/* ── How they work: construction diagram ── */}}
+<section id="how-they-work" class="section bg-foam">
+  <div class="container-page">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="eyebrow">How they work</p>
+      <h2 class="mt-3 text-3xl sm:text-4xl">What’s inside a soft-sided waterbed</h2>
+      <p class="mt-4 text-lg text-slate-body">
+        Foam edges, a zip-off wool cover, and a heavy-duty flotation mattress — built to look normal and support you all night.
+      </p>
+    </div>
+
+    <figure class="mx-auto mt-8 max-w-3xl">
+      <img
+        src="{{ "images/waterbed-construction-cream.jpg" | relURL }}"
+        alt="Cutaway diagram of a soft-sided waterbed showing wool cover, foam wedges, reinforced base, and PVC flotation mattress"
+        class="w-full rounded-2xl shadow-card ring-1 ring-navy/8"
+        width="1728"
+        height="1152"
+        loading="lazy"
+        decoding="async">
+      <figcaption class="sr-only">
+        1. Zip-off 100% pure wool cover. 2. Richly quilted sides. 3. Woven fabric sleeves bonded to foam wedge.
+        4. High density foam wedge comfort edge. 5. Fabric/vinyl reinforced base sheet.
+        6. Reinforced sheet sewn to fabric sleeves. 7. Heavy duty special formulated PVC flotation mattress.
+      </figcaption>
+    </figure>
+
+    <div class="mt-8 text-center">
+      <a href="#contact" class="btn-primary">Ready to sleep better?</a>
+    </div>
+  </div>
+</section>
+
+{{ end }}

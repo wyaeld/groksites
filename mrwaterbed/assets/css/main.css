@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand: navy + teal (Mr Waterbed NZ) */
+  --color-navy: #1b2b4b;
+  --color-navy-deep: #121e36;
+  --color-navy-soft: #2a3f66;
+  --color-teal: #2aabb8;
+  --color-teal-deep: #1f8f9a;
+  --color-teal-soft: #d4f0f3;
+  --color-cream: #f7f5f0;
+  --color-foam: #ffffff;
+  --color-ink: #1a2438;
+  --color-slate-body: #4a5568;
+  --color-mist: #f0f4f6;
+
+  /* Legacy aliases so existing partials keep working */
+  --color-harbour: #1b2b4b;
+  --color-harbour-deep: #121e36;
+  --color-wave: #2aabb8;
+  --color-wave-soft: #d4f0f3;
+  --color-brass: #2aabb8;
+  --color-brass-light: #7dd3db;
+  --color-coral: #2aabb8;
+
+  --font-display: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 14px 40px -14px rgb(27 43 75 / 0.28);
+  --shadow-card: 0 6px 28px -8px rgb(27 43 75 / 0.14);
+  --shadow-teal: 0 10px 30px -10px rgb(42 171 184 / 0.45);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-bold text-navy tracking-tight;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-teal;
+  }
+
+  /* Sticky header offset for in-page anchors */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3.5 text-base font-semibold transition-all duration-200 active:scale-[0.98];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3.5 text-base font-semibold transition-all duration-200 active:scale-[0.98] bg-teal text-white shadow-teal hover:bg-teal-deep hover:shadow-soft;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3.5 text-base font-semibold transition-all duration-200 active:scale-[0.98] bg-navy text-white hover:bg-navy-deep;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3.5 text-base font-semibold transition-all duration-200 active:scale-[0.98] border border-navy/12 bg-foam text-navy hover:border-teal hover:bg-teal-soft/50;
+  }
+
+  .section {
+    padding-block: 40px;
+  }
+
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.16em] text-teal;
+  }
+
+  .prose-mw {
+    @apply max-w-prose text-slate-body leading-relaxed;
+  }
+
+  .prose-mw p {
+    @apply mb-4 text-[1.05rem] leading-relaxed text-pretty;
+  }
+
+  .prose-mw h2 {
+    @apply mb-4 mt-10 text-2xl sm:text-3xl;
+  }
+
+  .prose-mw h3 {
+    @apply mb-3 mt-8 text-xl sm:text-2xl;
+  }
+
+  .prose-mw ul {
+    @apply mb-6 space-y-2 pl-1;
+  }
+
+  .prose-mw li {
+    @apply relative pl-6 text-[1.05rem] leading-relaxed;
+  }
+
+  .prose-mw li::before {
+    content: "";
+    @apply absolute left-0 top-[0.65em] h-2 w-2 rounded-full bg-teal;
+  }
+
+  .prose-mw a {
+    @apply font-semibold text-navy underline decoration-teal/50 underline-offset-2 hover:decoration-teal;
+  }
+
+  .card {
+    @apply rounded-2xl bg-foam p-6 shadow-card;
+  }
+
+  .feature-check {
+    @apply flex gap-3 text-slate-body;
+  }
+
+  .feature-check::before {
+    content: "";
+    @apply mt-2 h-2 w-2 shrink-0 rounded-full bg-teal;
+  }
+
+  .form-field {
+    @apply w-full rounded-xl border border-navy/12 bg-foam px-4 py-3 text-base text-ink placeholder:text-slate-body/50 transition-colors duration-200 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/25;
+  }
+
+  .form-label {
+    @apply mb-1.5 block text-sm font-semibold text-navy;
+  }
+
+  .nav-link {
+    @apply rounded-full px-3.5 py-2 text-sm font-semibold text-slate-body transition-colors duration-200 hover:bg-teal-soft/60 hover:text-navy;
+  }
+
+  .nav-link-active {
+    @apply bg-teal-soft/80 text-navy;
+  }
+
+  .price-pill {
+    @apply inline-flex items-center gap-2 rounded-full bg-teal-soft px-4 py-2 text-sm font-bold text-navy;
+  }
+
+  .story-panel {
+    background: linear-gradient(160deg, #1b2b4b 0%, #1f3d5c 48%, #1a6b75 100%);
+  }
+
+  .grain {
+    position: relative;
+  }
+
+  .grain::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    mix-blend-mode: multiply;
+  }
+
+}

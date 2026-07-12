@@ -1,0 +1,13 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container-page max-w-2xl text-center">
+    <p class="eyebrow">404</p>
+    <h1 class="mt-3 text-4xl">Page not found</h1>
+    <p class="mt-4 text-lg text-slate-body">That page has drifted off. Let’s get you back somewhere useful.</p>
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="{{ "/" | relURL }}" class="btn-secondary">Home</a>
+      <a href="{{ .Site.Params.phoneHref | safeURL }}" class="btn-primary">Call Colin</a>
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,60 @@
+# --- Hugo (per-site) ---
+**/public/
+**/resources/
+.hugo_build.lock
+**/.hugo_build.lock
+
+# --- Node / npm (Tailwind CLI, per site) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm
+.package-lock.json.bak
+
+# Built CSS (source: assets/css/main.css → npm run build:css)
+**/static/css/main.css
+**/static/css/*.map
+
+# --- Local agent / Grok tooling ---
+.grok/
+.claude/
+.agents/
+
+# --- Environment & secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- OS ---
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Editors / IDEs ---
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# --- Logs & temp ---
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+.cache/
+
+# --- Netlify local ---
+.netlify/

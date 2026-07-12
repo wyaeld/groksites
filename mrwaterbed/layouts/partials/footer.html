@@ -1,0 +1,47 @@
+<footer class="mt-auto bg-navy-deep text-teal-soft">
+  <div class="container-page py-12 sm:py-14">
+    <div class="grid gap-10 sm:grid-cols-2">
+      <div>
+        <div class="mb-4 flex items-center gap-2.5">
+          <img src="{{ "images/logo.png" | relURL }}" alt="" width="72" height="36" class="h-9 w-auto brightness-0 invert opacity-90">
+          <span class="font-display text-lg font-extrabold text-foam">
+            Mr Waterbed <span class="text-teal">NZ</span>
+          </span>
+        </div>
+        <p class="max-w-sm text-sm leading-relaxed text-white/75">
+          Soft-sided waterbeds that look like a normal bed — with full-body support, adjustable temperature, and service you can call anytime.
+        </p>
+        <nav class="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold" aria-label="Footer">
+          <a class="text-white/80 transition-colors hover:text-teal" href="{{ "/" | relURL }}#waterbeds">Waterbeds</a>
+          <a class="text-white/80 transition-colors hover:text-teal" href="{{ "/" | relURL }}#services">Services</a>
+          <a class="text-white/80 transition-colors hover:text-teal" href="{{ "/" | relURL }}#contact">Contact</a>
+          <a class="text-white/80 transition-colors hover:text-teal" href="{{ "/" | relURL }}#how-they-work">How they work</a>
+        </nav>
+      </div>
+
+      <div>
+        <h2 class="mb-3 font-display text-lg font-bold text-foam">Contact details</h2>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a class="font-bold text-foam transition-colors hover:text-teal" href="{{ .Site.Params.phoneHref | safeURL }}">
+              {{ .Site.Params.phone }}
+            </a>
+            <span class="block text-white/60">Call Colin anytime</span>
+          </li>
+          <li>
+            <a class="font-bold text-foam transition-colors hover:text-teal" href="{{ .Site.Params.emailHref }}">
+              {{ .Site.Params.email }}
+            </a>
+          </li>
+          <li class="text-white/75 leading-relaxed">
+            {{ .Site.Params.region }}. Delivery available nationwide.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 border-t border-white/10 pt-6 text-xs text-white/50">
+      <p>&copy; {{ now.Year }} Mr Waterbed NZ. Soft-sided waterbed sales &amp; services.</p>
+    </div>
+  </div>
+</footer>

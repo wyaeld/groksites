@@ -1,0 +1,15 @@
+{
+  "name": "mrwaterbed",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:css": "npx @tailwindcss/cli -i ./assets/css/main.css -o ./static/css/main.css --watch",
+    "build:css": "npx @tailwindcss/cli -i ./assets/css/main.css -o ./static/css/main.css --minify",
+    "dev": "npm run build:css && hugo server -D",
+    "build": "npm run build:css && hugo --minify --cleanDestinationDir"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "tailwindcss": "^4.1.11"
+  }
+}

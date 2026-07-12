@@ -1,0 +1,45 @@
+baseURL = "https://www.mrwaterbed.co.nz/"
+title = "Mr Waterbed NZ"
+defaultContentLanguage = "en"
+
+[languages]
+  [languages.en]
+    locale = "en-NZ"
+    label = "English"
+    weight = 1
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+summaryLength = 30
+
+[params]
+  description = "Soft-sided waterbeds for back pain relief, better sleep, and year-round comfort. NZ-made Surrey beds, sales & service across Wellington and beyond. Call Colin on 0274 433 088."
+  author = "Colin — Mr Waterbed"
+  phone = "0274 433 088"
+  phoneHref = "tel:0274433088"
+  email = "mrwaterbednz@gmail.com"
+  emailHref = "mailto:mrwaterbednz@gmail.com"
+  region = "Greater Wellington, Kapiti Coast, Hutt Valley, Wairarapa & Palmerston North"
+  tagline = "Soft-sided waterbeds. Real back-pain relief."
+
+[menus]
+  [[menus.main]]
+    name = "Waterbeds"
+    url = "/#waterbeds"
+    weight = 1
+  [[menus.main]]
+    name = "Services"
+    url = "/#services"
+    weight = 2
+  [[menus.main]]
+    name = "Contact"
+    url = "/#contact"
+    weight = 3
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML"]
+  page = ["HTML"]
