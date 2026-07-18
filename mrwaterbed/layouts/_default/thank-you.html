@@ -1,0 +1,33 @@
+{{ define "main" }}
+<section class="section relative overflow-hidden bg-foam">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -right-24 -top-16 h-64 w-64 rounded-full bg-teal/10 blur-3xl"></div>
+    <div class="absolute -left-20 bottom-0 h-48 w-48 rounded-full bg-navy/8 blur-3xl"></div>
+  </div>
+
+  <div class="container-page relative flex min-h-[55vh] flex-col items-center justify-center py-8 text-center sm:py-12">
+    <div class="w-full max-w-lg rounded-3xl bg-cream p-8 shadow-soft ring-1 ring-navy/8 sm:p-10">
+      <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-soft text-teal" aria-hidden="true">
+        <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+      </div>
+
+      <p class="eyebrow mt-6">Message sent</p>
+      <h1 class="mt-3 text-3xl sm:text-4xl">{{ .Title }}</h1>
+      <p class="mt-4 text-lg leading-relaxed text-slate-body">
+        Colin has your enquiry and will be in touch soon — usually within a day or two during the week.
+      </p>
+      <p class="mt-4 text-base leading-relaxed text-slate-body">
+        Need something sooner? Call
+        <a href="{{ .Site.Params.phoneHref | safeURL }}" class="font-bold text-navy hover:text-teal">{{ .Site.Params.phone }}</a>.
+      </p>
+
+      <div class="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:justify-center">
+        <a href="{{ "/" | relURL }}" class="btn-primary">Back to home</a>
+        <a href="{{ "/" | relURL }}#waterbeds" class="btn-ghost">See our beds</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

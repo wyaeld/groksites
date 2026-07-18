@@ -7,6 +7,9 @@
 {{- $desc := .Params.description | default .Summary | default .Site.Params.description | plainify | truncate 160 -}}
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $desc }}">
+{{- with .Params.robots -}}
+<meta name="robots" content="{{ . }}">
+{{- end -}}
 <link rel="canonical" href="{{ .Permalink }}">
 
 <meta property="og:type" content="website">

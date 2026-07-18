@@ -26,7 +26,8 @@ Each site is a **standalone Hugo project**: its own config, content, theme/layou
 
 | Directory     | Netlify project | Base directory | URL |
 |---------------|-----------------|----------------|-----|
-| `mrwaterbed/` | `mrwaterbed`    | `mrwaterbed`   | https://mrwaterbed.netlify.app (prod domain: https://www.mrwaterbed.co.nz/) |
+| `mrwaterbed/` | **`waterbeds`** (production) | `mrwaterbed` | https://www.mrwaterbed.co.nz |
+| `mrwaterbed/` | `mrwaterbed` (preview / staging) | `mrwaterbed` | https://mrwaterbed.netlify.app |
 
 ## Prerequisites
 
@@ -70,16 +71,20 @@ Output goes to that site’s `public/` directory (gitignored).
 
 This monorepo uses **Git continuous deployment**: a push to `main` rebuilds each linked Netlify project. Each site folder maps to **its own** Netlify project with **Base directory** set to that folder.
 
-### How `mrwaterbed` is wired today
+### How `mrwaterbed/` is wired today
 
-| Setting | Value |
-|---------|--------|
-| Repo | `wyaeld/groksites` |
-| Branch | `main` |
-| Base directory | `mrwaterbed` |
-| Build command | `npm ci && npm run build` (or from that folder’s `netlify.toml`) |
-| Publish directory | `public` (relative to the base directory) |
-| Path filter | `ignore` in `mrwaterbed/netlify.toml` skips builds when only other paths change |
+Two Netlify projects build the same monorepo path (`mrwaterbed/`):
+
+| Setting | Production (`waterbeds`) | Preview (`mrwaterbed`) |
+|---------|--------------------------|------------------------|
+| Site ID | `67f4b9e6-b2bb-478e-907c-cace62c46ed2` | `accb1cae-9116-4200-a4c2-c76880518e84` |
+| Custom domain | **www.mrwaterbed.co.nz** | (none — `*.netlify.app` only) |
+| Repo | `wyaeld/groksites` | `wyaeld/groksites` |
+| Branch | `main` | `main` |
+| Base directory | `mrwaterbed` | `mrwaterbed` |
+| Build command | `npm ci && npm run build` (or from that folder’s `netlify.toml`) | same |
+| Publish directory | `public` (relative to the base directory) | same |
+| Path filter | `ignore` in `mrwaterbed/netlify.toml` skips builds when only other paths change | same |
 
 Do **not** set the monorepo root as the base directory unless you intentionally only build one site from root. Do **not** set Netlify **Package directory** to a nested path when it is the same as the base directory (that broke the first CD builds).
 
