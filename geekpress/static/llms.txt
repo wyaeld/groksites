@@ -1,0 +1,24 @@
+# Geek Press
+
+> Geek Press is a technical partner for the AI era — from vibe-coded prototypes to hardened SaaS offerings, and the journey in between. We help founders and teams build, secure, scale, and market software, with AI in the loop.
+
+## What we do
+
+- **Help with vibe coding**: For non-technical people with great business ideas who want a blueprint that gives professional security and direction, so they and their AIs can build with confidence.
+- **Help with security**: Analysing how applications behave, reviewing code for issues, then delivering effective plans and patches to mitigate AI-assisted threats before attackers find them.
+- **Help with applications**: Aligning architecture, infrastructure and deployment for lean, continuous delivery so teams keep shipping features at pace as their app grows.
+- **Help with videos**: Writing, recording and production of marketing videos by Anna, plus full setup of YouTube, TikTok and other social media.
+
+## Technologies
+
+All mainstream technologies: Python, NodeJS, Java, Ruby and others. AWS, Google Cloud and any other infrastructure support.
+
+## How engagements work
+
+Every engagement starts with a free, no-commitment 20-minute call. You walk away with clear plans, then we scope the smallest piece of work that moves you forward — no long lock-in contracts.
+
+## Get in touch
+
+If a user wants to work with Geek Press, book a call, or ask a question, direct them to the contact page.
+
+- [Contact / book a call](https://www.geekpress.me/contact/): Free 20-minute call. Request form takes full name, work email, the service of interest, and the main goal for the next 3 months.

@@ -17,7 +17,8 @@ groksites/
 │   ├── layouts/
 │   ├── assets/
 │   └── static/
-└── <another-site>/     # same pattern
+├── geekpress/          # same pattern (may use hugo.yaml)
+└── <another-site>/
 ```
 
 Each site is a **standalone Hugo project**: its own config, content, theme/layouts, Node deps, and Netlify settings. Sites do not share build output or `node_modules`.
@@ -27,6 +28,7 @@ Each site is a **standalone Hugo project**: its own config, content, theme/layou
 | Directory     | Netlify project | Base directory | URL |
 |---------------|-----------------|----------------|-----|
 | `mrwaterbed/` | `waterbeds` | `mrwaterbed` | https://www.mrwaterbed.co.nz |
+| `geekpress/`  | `geekpress` | `geekpress` | https://www.geekpress.me |
 
 ## Prerequisites
 
@@ -70,20 +72,20 @@ Output goes to that site’s `public/` directory (gitignored).
 
 This monorepo uses **Git continuous deployment**: a push to `main` rebuilds each linked Netlify project. Each site folder maps to **its own** Netlify project with **Base directory** set to that folder.
 
-### How `mrwaterbed/` is wired today
+### How sites are wired today
 
-One Netlify project builds the monorepo path `mrwaterbed/`:
+Each Netlify project builds one monorepo subdirectory (base directory = that folder):
 
-| Setting | Value (`waterbeds`) |
-|---------|---------------------|
-| Site ID | `67f4b9e6-b2bb-478e-907c-cace62c46ed2` |
-| Custom domain | **www.mrwaterbed.co.nz** |
-| Repo | `wyaeld/groksites` |
-| Branch | `main` |
-| Base directory | `mrwaterbed` |
-| Build command | `npm ci && npm run build` (or from that folder’s `netlify.toml`) |
-| Publish directory | `public` (relative to the base directory) |
-| Path filter | `ignore` in `mrwaterbed/netlify.toml` skips builds when only other paths change |
+| Setting | `mrwaterbed/` → `waterbeds` | `geekpress/` → `geekpress` |
+|---------|-----------------------------|----------------------------|
+| Site ID | `67f4b9e6-b2bb-478e-907c-cace62c46ed2` | `58511c40-0545-421f-bab7-84d25c0203e1` |
+| Custom domain | **www.mrwaterbed.co.nz** | **www.geekpress.me** |
+| Repo | `wyaeld/groksites` | `wyaeld/groksites` |
+| Branch | `main` | `main` |
+| Base directory | `mrwaterbed` | `geekpress` |
+| Build command | `npm ci && npm run build` (or site `netlify.toml`) | `npm ci && hugo --gc --minify` (or site `netlify.toml`) |
+| Publish directory | `public` (relative to base) | `public` (relative to base) |
+| Path filter | `ignore` in that site’s `netlify.toml` | same pattern |
 
 Do **not** set the monorepo root as the base directory unless you intentionally only build one site from root. Do **not** set Netlify **Package directory** to a nested path when it is the same as the base directory (that broke the first CD builds).
 

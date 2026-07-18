@@ -1,0 +1,50 @@
+baseURL: https://www.geekpress.me/
+title: Geek Press
+enableRobotsTXT: true
+enableEmoji: false
+disableKinds:
+  - taxonomy
+  - term
+
+languages:
+  en:
+    locale: en-US
+    label: English
+    weight: 1
+
+params:
+  description: "Geek Press — your technical partner for the AI era: vibe coding, security, applications, and marketing videos."
+  author: "Geek Press"
+  tagline: "Build with AI. Ship software that's secure, scalable, and seen."
+  email: "hello@geekpress.me"
+  brand:
+    name: "Geek Press"
+  header:
+    cta_text: "Get Started"
+    cta_url: "/contact/"
+  footer:
+    links_heading: "Explore"
+    contact_heading: "Get in touch"
+    contact_cta: "Book a call"
+    copyright_suffix: "All rights reserved."
+    site_label: "geekpress.me"
+
+menu:
+  main:
+    - name: Home
+      url: /#top
+      weight: 10
+    - name: Services
+      url: /#services
+      weight: 20
+    - name: Team
+      url: /#team
+      weight: 25
+    - name: FAQ
+      url: /#faq
+      weight: 30
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

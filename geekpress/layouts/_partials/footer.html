@@ -1,0 +1,33 @@
+<footer class="bg-ink text-slate-300">
+  <div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="max-w-sm">
+      <a class="flex items-center gap-2.5 font-extrabold text-white" href="{{ "/" | relURL }}">
+        {{ partial "logo-img.html" . }}
+        <span class="text-lg">{{ site.Params.brand.name }}</span>
+      </a>
+      <p class="mt-4 text-slate-400">{{ site.Params.tagline }}</p>
+    </div>
+
+    <div>
+      <h4 class="text-sm font-bold uppercase tracking-widest text-white">{{ site.Params.footer.links_heading }}</h4>
+      <ul class="mt-4 space-y-2.5">
+        {{ range site.Menus.main }}
+          <li><a class="text-slate-400 transition-colors hover:text-white" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+        {{ end }}
+        <li><a class="text-slate-400 transition-colors hover:text-white" href="{{ site.Params.header.cta_url | relURL }}">{{ site.Params.header.cta_text }}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-sm font-bold uppercase tracking-widest text-white">{{ site.Params.footer.contact_heading }}</h4>
+      <a class="mt-4 inline-flex items-center justify-center rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-600" href="{{ site.Params.header.cta_url | relURL }}">{{ site.Params.footer.contact_cta }}</a>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-6 py-6 text-sm text-slate-500 sm:flex-row">
+      <span>&copy; {{ now.Year }} {{ site.Params.brand.name }}. {{ site.Params.footer.copyright_suffix }}</span>
+      <span>{{ site.Params.footer.site_label }}</span>
+    </div>
+  </div>
+</footer>

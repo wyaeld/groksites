@@ -1,0 +1,32 @@
+[build]
+  publish = "public"
+  command = "npm ci && hugo --gc --minify"
+  # Skip this site's build when the commit only touches other monorepo paths.
+  # Base dir is geekpress on the Netlify project, so "." is this site folder.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ."
+
+[build.environment]
+  HUGO_VERSION = "0.161.1"
+  NODE_VERSION = "22"
+  HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
+  TZ = "UTC"
+
+# Production deploys (main branch): use the live baseURL from hugo.yaml.
+[context.production.environment]
+  HUGO_ENV = "production"
+
+# Deploy previews on PRs: rewrite baseURL so absolute links point at the preview.
+[context.deploy-preview]
+  command = "npm ci && hugo --gc --minify -b $DEPLOY_PRIME_URL"
+
+# Branch deploys (non-main): same trick.
+[context.branch-deploy]
+  command = "npm ci && hugo --gc --minify -b $DEPLOY_PRIME_URL"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -1,0 +1,22 @@
+# Normalize all text files to LF in the repo and on checkout, on every OS.
+# This is authoritative — it overrides core.autocrlf / core.eol settings per-contributor.
+* text=auto eol=lf
+
+# Explicit binary types — never touched by line-ending normalization.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.svg   text eol=lf
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.eot   binary
+*.pdf   binary
+*.zip   binary
+*.gz    binary
+*.mp4   binary
+*.webm  binary
