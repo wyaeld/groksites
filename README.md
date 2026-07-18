@@ -26,8 +26,7 @@ Each site is a **standalone Hugo project**: its own config, content, theme/layou
 
 | Directory     | Netlify project | Base directory | URL |
 |---------------|-----------------|----------------|-----|
-| `mrwaterbed/` | **`waterbeds`** (production) | `mrwaterbed` | https://www.mrwaterbed.co.nz |
-| `mrwaterbed/` | `mrwaterbed` (preview / staging) | `mrwaterbed` | https://mrwaterbed.netlify.app |
+| `mrwaterbed/` | `waterbeds` | `mrwaterbed` | https://www.mrwaterbed.co.nz |
 
 ## Prerequisites
 
