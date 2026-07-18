@@ -1,0 +1,14 @@
+{
+  "name": "avalonservicecentre",
+  "version": "1.0.0",
+  "description": "Avalon Service Centre Hugo site (Tailwind via Hugo css.TailwindCSS)",
+  "private": true,
+  "scripts": {
+    "dev": "hugo server -D",
+    "build": "hugo --gc --minify --cleanDestinationDir"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}

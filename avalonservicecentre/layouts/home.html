@@ -1,0 +1,175 @@
+{{ define "main" }}
+
+{{ with .Params.hero }}
+<section class="relative isolate overflow-hidden bg-ink">
+  <img src="{{ "img/workshop.jpg" | relURL }}" alt="The Avalon Service Centre workshop on Taita Drive" class="absolute inset-0 h-full w-full object-cover opacity-35" decoding="async" fetchpriority="high">
+  <div class="absolute inset-0 bg-gradient-to-br from-ink/95 via-ink/85 to-brand-700/75" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-6xl px-5 py-20 sm:px-6 sm:py-28 lg:py-32">
+    <div class="max-w-3xl">
+      {{ with .eyebrow }}<span class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-signal-400"><span class="h-2.5 w-2.5 bg-signal-500"></span>{{ . }}</span>{{ end }}
+      <h1 class="mt-5 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl">{{ .heading }}</h1>
+      {{ with .lede }}<p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-200 sm:text-xl">{{ . }}</p>{{ end }}
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+        {{ with .primary_cta }}
+          <a class="inline-flex items-center justify-center gap-2 rounded-md bg-signal-500 px-7 py-4 text-base font-bold uppercase tracking-wide text-white shadow-lg shadow-signal-600/30 transition hover:bg-signal-600" href="{{ .url }}">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.5 11.5 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2Z"/></svg>
+            {{ .text }}
+          </a>
+        {{ end }}
+        {{ with .secondary_cta }}
+          <a class="inline-flex items-center justify-center rounded-md border-2 border-white/40 bg-white/5 px-7 py-4 text-base font-bold uppercase tracking-wide text-white transition hover:border-white hover:bg-white/10" href="{{ .url | relURL }}">{{ .text }}</a>
+        {{ end }}
+      </div>
+      {{ with .note }}<p class="mt-6 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-brand-100">{{ . }}</p>{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.credentials }}
+<section class="border-b border-slate-200 bg-concrete">
+  <div class="mx-auto max-w-6xl px-5 py-12 sm:px-6">
+    <ul class="grid gap-8 sm:grid-cols-3 sm:gap-10">
+      {{ range . }}
+        <li class="flex items-center gap-4">
+          {{ if .logo }}
+            <img src="{{ .logo | relURL }}" alt="{{ .logo_alt }}" width="56" height="56" class="h-14 w-14 flex-none rounded-md bg-white object-contain p-1 ring-1 ring-slate-200" decoding="async">
+          {{ else }}
+            <span class="flex h-14 w-14 flex-none items-center justify-center rounded-md bg-white ring-1 ring-slate-200">
+              <svg class="h-7 w-7 text-signal-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </span>
+          {{ end }}
+          <div>
+            <p class="font-display font-bold uppercase tracking-wide text-ink">{{ .title }}</p>
+            <p class="text-sm text-slate-600">{{ .body }}</p>
+          </div>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.services }}
+<section id="services" class="scroll-mt-20 bg-white py-20 sm:py-24">
+  <div class="mx-auto max-w-6xl px-5 sm:px-6">
+    <div class="max-w-2xl">
+      {{ with .eyebrow }}<span class="text-sm font-bold uppercase tracking-widest text-signal-500">{{ . }}</span>{{ end }}
+      <h2 class="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink sm:text-5xl">{{ .heading }}</h2>
+      {{ with .intro }}<p class="mt-4 text-lg text-slate-600">{{ . }}</p>{{ end }}
+    </div>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+      {{ range .items }}
+        <div class="group flex flex-col rounded-lg border border-slate-200 bg-white p-7 transition hover:border-brand-500 hover:shadow-xl hover:shadow-brand-700/5">
+          <div class="h-1 w-12 bg-signal-500 transition-all group-hover:w-20"></div>
+          <h3 class="mt-5 font-display text-xl font-bold uppercase tracking-wide text-ink">{{ .title }}</h3>
+          <p class="mt-2 text-slate-600">{{ .body }}</p>
+          {{ with .price }}<p class="mt-4 font-display text-sm font-bold uppercase tracking-wide text-brand-600">{{ . }}</p>{{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.wof }}
+<section id="wof" class="scroll-mt-20 bg-brand-600">
+  <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-20 sm:px-6 sm:py-24 lg:grid-cols-2">
+    <div>
+      {{ with .eyebrow }}<span class="text-sm font-bold uppercase tracking-widest text-brand-100">{{ . }}</span>{{ end }}
+      <h2 class="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-5xl">{{ .heading }}</h2>
+      {{ with .body }}<p class="mt-4 max-w-md text-lg text-brand-50">{{ . }}</p>{{ end }}
+      {{ with .points }}
+        <ul class="mt-6 space-y-3">
+          {{ range . }}
+            <li class="flex items-center gap-3 font-medium text-white">
+              <svg class="h-5 w-5 flex-none text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              {{ . }}
+            </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+      {{ with .cta }}
+        <a class="mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-signal-500 px-7 py-4 text-base font-bold uppercase tracking-wide text-white shadow-lg transition hover:bg-signal-600" href="{{ .url }}">
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.5 11.5 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2Z"/></svg>
+          {{ .text }}
+        </a>
+      {{ end }}
+    </div>
+    <div class="flex justify-center lg:justify-end">
+      <div class="rotate-2 rounded-2xl border-4 border-dashed border-brand-200 bg-white px-12 py-10 text-center shadow-2xl">
+        <p class="font-display text-sm font-bold uppercase tracking-[0.3em] text-brand-600">{{ .sticker_label }}</p>
+        <p class="mt-1 font-display text-7xl font-black leading-none text-signal-500 sm:text-8xl">{{ .sticker_price }}</p>
+        <p class="mt-2 font-semibold uppercase tracking-wide text-slate-500">{{ .sticker_note }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.about }}
+<section id="about" class="scroll-mt-20 bg-ink py-20 sm:py-24">
+  <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-0 sm:px-6 lg:grid-cols-5">
+    <div class="lg:col-span-3">
+      {{ with .eyebrow }}<span class="text-sm font-bold uppercase tracking-widest text-signal-400">{{ . }}</span>{{ end }}
+      <h2 class="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-5xl">{{ .heading }}</h2>
+      {{ range .body }}<p class="mt-5 text-lg leading-relaxed text-slate-300">{{ . }}</p>{{ end }}
+      {{ with .signoff }}<p class="mt-6 font-display text-lg font-bold uppercase tracking-wide text-white">{{ . }}</p>{{ end }}
+    </div>
+    {{ with .stats }}
+      <div class="grid grid-cols-2 gap-5 lg:col-span-2">
+        {{ range . }}
+          <div class="border-t-2 border-signal-500 bg-white/5 p-6">
+            <p class="font-display text-4xl font-black text-white sm:text-5xl">{{ .value }}</p>
+            <p class="mt-1 text-sm font-semibold uppercase tracking-wide text-slate-400">{{ .label }}</p>
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.contact }}
+<section id="contact" class="scroll-mt-20 bg-white py-20 sm:py-24">
+  <div class="mx-auto max-w-6xl px-5 sm:px-6">
+    <div class="grid gap-12 lg:grid-cols-2">
+      <div>
+        {{ with .eyebrow }}<span class="text-sm font-bold uppercase tracking-widest text-signal-500">{{ . }}</span>{{ end }}
+        <h2 class="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink sm:text-5xl">{{ .heading }}</h2>
+        {{ with .body }}<p class="mt-4 max-w-md text-lg text-slate-600">{{ . }}</p>{{ end }}
+        {{ with site.Params.contact }}
+          <a class="mt-8 inline-flex w-full items-center justify-center gap-3 rounded-md bg-signal-500 px-7 py-5 text-center font-display text-2xl font-black tracking-wide text-white shadow-lg transition hover:bg-signal-600 sm:w-auto sm:text-3xl" href="tel:{{ .phone_tel }}">
+            <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.5 11.5 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2Z"/></svg>
+            {{ .phone_display }}
+          </a>
+          <p class="mt-3 text-sm text-slate-500">Prefer to text? Call our mobile <a class="font-semibold text-brand-600 hover:text-brand-700" href="tel:{{ .mobile_tel }}">{{ .mobile_display }}</a></p>
+        {{ end }}
+      </div>
+
+      {{ with site.Params.contact }}
+        <dl class="grid gap-px overflow-hidden rounded-lg border border-slate-200 bg-slate-200 sm:grid-cols-2">
+          <div class="bg-concrete p-6">
+            <dt class="font-display text-sm font-bold uppercase tracking-widest text-signal-500">Workshop</dt>
+            <dd class="mt-2 text-ink"><a class="hover:text-brand-600" href="{{ .maps_url }}" target="_blank" rel="noopener">{{ .address_line1 }}<br>{{ .address_line2 }}</a></dd>
+          </div>
+          <div class="bg-concrete p-6">
+            <dt class="font-display text-sm font-bold uppercase tracking-widest text-signal-500">Hours</dt>
+            <dd class="mt-2 text-ink">{{ .hours }}</dd>
+          </div>
+          <div class="bg-concrete p-6">
+            <dt class="font-display text-sm font-bold uppercase tracking-widest text-signal-500">Phone</dt>
+            <dd class="mt-2 text-ink"><a class="hover:text-brand-600" href="tel:{{ .phone_tel }}">{{ .phone_display }}</a><br><a class="hover:text-brand-600" href="tel:{{ .mobile_tel }}">{{ .mobile_display }}</a></dd>
+          </div>
+          <div class="bg-concrete p-6">
+            <dt class="font-display text-sm font-bold uppercase tracking-widest text-signal-500">Email</dt>
+            <dd class="mt-2 break-all text-ink"><a class="hover:text-brand-600" href="mailto:{{ .email }}">{{ .email }}</a></dd>
+          </div>
+        </dl>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

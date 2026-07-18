@@ -1,0 +1,28 @@
+# Hugo build output
+public/
+
+# Hugo asset pipeline cache. Safe to ignore; some teams commit this for
+# deterministic deploys — flip it on if that's the case here.
+resources/
+.hugo_build.lock
+
+# Hugo modules (if/when go.mod is added)
+hugo_stats.json
+
+# Node dependencies (Hugo Pipes / PostCSS / Tailwind integrations)
+node_modules/
+npm-debug.log*
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Local Netlify folder
+.netlify

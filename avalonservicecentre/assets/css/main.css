@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* Tell Tailwind where to scan for class names (Hugo virtual paths). */
+@source "hugo:///layouts";
+@source "hugo:///content";
+
+@theme {
+  /* Display = Archivo (engineered, signage-like). Body = Barlow (industrial, warm, legible). */
+  --font-display: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+
+  /* Brand blue — drawn straight from the ASC logo and the workshop building. */
+  --color-brand-50: #eaf3fb;
+  --color-brand-100: #cfe3f6;
+  --color-brand-200: #a6caee;
+  --color-brand-400: #2b7fd0;
+  --color-brand-500: #0e5fb0;
+  --color-brand-600: #0b4f93;
+  --color-brand-700: #0a3f76;
+
+  /* Signal red — the "S" in ASC and the red work van. The action colour. */
+  --color-signal-400: #ef3a31;
+  --color-signal-500: #e0241b;
+  --color-signal-600: #c11a16;
+
+  /* Deep navy-black for dark sections + concrete neutral for light ones. */
+  --color-ink: #0a1726;
+  --color-concrete: #f4f5f7;
+}
+
+/* Signature: the workshop hazard stripe — red/ink diagonal, used with restraint
+   as a thin band at section seams. The visual language of a service-bay floor. */
+.svc-stripe {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-signal-500) 0 14px,
+    var(--color-ink) 14px 28px
+  );
+}
+
+/* Accessible focus ring for keyboard users across the dark and light sections. */
+:focus-visible {
+  outline: 3px solid var(--color-signal-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

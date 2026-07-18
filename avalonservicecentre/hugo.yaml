@@ -1,0 +1,57 @@
+baseURL: https://www.avalonservicecentre.co.nz/
+title: Avalon Service Centre
+enableRobotsTXT: true
+enableEmoji: false
+disableKinds:
+  - taxonomy
+  - term
+
+languages:
+  en:
+    locale: en-NZ
+    label: English
+    weight: 1
+
+params:
+  description: "Avalon Service Centre — your one-stop auto repair workshop in Avalon, Lower Hutt. Servicing, repairs and WOFs you can trust. MTA Assured, AA Licensed Repairer."
+  author: "Avalon Service Centre Ltd"
+  tagline: "Your one-stop auto workshop in Avalon, Lower Hutt."
+  brand:
+    name: "Avalon Service Centre"
+  contact:
+    phone_display: "04 567 7429"
+    phone_tel: "+6445677429"
+    mobile_display: "027 813 3040"
+    mobile_tel: "+64278133040"
+    email: "avalonservicecentre@xtra.co.nz"
+    hours: "Mon–Fri, 8am–5:30pm"
+    address_line1: "170–174 Taita Drive"
+    address_line2: "Avalon, Lower Hutt 5011"
+    maps_url: "https://maps.google.com/?q=Avalon+Service+Centre,+170-174+Taita+Drive,+Avalon,+Lower+Hutt"
+  header:
+    cta_text: "Call 04 567 7429"
+  footer:
+    nav_heading: "Workshop"
+    contact_heading: "Get in touch"
+    copyright_suffix: "All rights reserved."
+    credentials: "MTA Assured · AA Licensed Repairer"
+
+menu:
+  main:
+    - name: Services
+      url: /#services
+      weight: 10
+    - name: WOF
+      url: /#wof
+      weight: 20
+    - name: About
+      url: /#about
+      weight: 40
+    - name: Contact
+      url: /#contact
+      weight: 50
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

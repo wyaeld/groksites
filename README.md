@@ -18,6 +18,7 @@ groksites/
 │   ├── assets/
 │   └── static/
 ├── geekpress/          # same pattern (may use hugo.yaml)
+├── avalonservicecentre/
 └── <another-site>/
 ```
 
@@ -25,10 +26,11 @@ Each site is a **standalone Hugo project**: its own config, content, theme/layou
 
 ## Sites
 
-| Directory     | Netlify project | Base directory | URL |
-|---------------|-----------------|----------------|-----|
-| `mrwaterbed/` | `waterbeds` | `mrwaterbed` | https://www.mrwaterbed.co.nz |
-| `geekpress/`  | `geekpress` | `geekpress` | https://www.geekpress.me |
+| Directory                | Netlify project        | Base directory         | URL |
+|--------------------------|------------------------|------------------------|-----|
+| `mrwaterbed/`            | `waterbeds`            | `mrwaterbed`           | https://www.mrwaterbed.co.nz |
+| `geekpress/`             | `geekpress`            | `geekpress`            | https://www.geekpress.me |
+| `avalonservicecentre/`   | `avalonservicecentre`  | `avalonservicecentre`  | https://avalonservicecentre.netlify.app |
 
 ## Prerequisites
 
@@ -74,18 +76,13 @@ This monorepo uses **Git continuous deployment**: a push to `main` rebuilds each
 
 ### How sites are wired today
 
-Each Netlify project builds one monorepo subdirectory (base directory = that folder):
+Each Netlify project builds one monorepo subdirectory (base directory = that folder). Shared: repo `wyaeld/groksites`, branch `main`, publish `public`, path filter via site `netlify.toml` `ignore`.
 
-| Setting | `mrwaterbed/` → `waterbeds` | `geekpress/` → `geekpress` |
-|---------|-----------------------------|----------------------------|
-| Site ID | `67f4b9e6-b2bb-478e-907c-cace62c46ed2` | `58511c40-0545-421f-bab7-84d25c0203e1` |
-| Custom domain | **www.mrwaterbed.co.nz** | **www.geekpress.me** |
-| Repo | `wyaeld/groksites` | `wyaeld/groksites` |
-| Branch | `main` | `main` |
-| Base directory | `mrwaterbed` | `geekpress` |
-| Build command | `npm ci && npm run build` (or site `netlify.toml`) | `npm ci && hugo --gc --minify` (or site `netlify.toml`) |
-| Publish directory | `public` (relative to base) | `public` (relative to base) |
-| Path filter | `ignore` in that site’s `netlify.toml` | same pattern |
+| Site folder | Netlify project | Site ID | Domain / URL | Base | Build command |
+|-------------|-----------------|---------|--------------|------|---------------|
+| `mrwaterbed/` | `waterbeds` | `67f4b9e6-…` | **www.mrwaterbed.co.nz** | `mrwaterbed` | `npm ci && npm run build` |
+| `geekpress/` | `geekpress` | `58511c40-…` | **www.geekpress.me** | `geekpress` | `npm ci && hugo --gc --minify` |
+| `avalonservicecentre/` | `avalonservicecentre` | `b1ce2690-…` | avalonservicecentre.netlify.app | `avalonservicecentre` | `npm ci && hugo --gc --minify` |
 
 Do **not** set the monorepo root as the base directory unless you intentionally only build one site from root. Do **not** set Netlify **Package directory** to a nested path when it is the same as the base directory (that broke the first CD builds).
 
