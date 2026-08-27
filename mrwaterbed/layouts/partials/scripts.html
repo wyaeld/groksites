@@ -25,4 +25,13 @@
       link.addEventListener('click', function () { setOpen(false); });
     });
   })();
+
+  (function () {
+    var form = document.querySelector('form[name="contact"]');
+    if (!form) return;
+    form.addEventListener('submit', function () {
+      var hp = form.querySelector('[name="bot-field"]');
+      if (hp) hp.value = '';
+    });
+  })();
 </script>
